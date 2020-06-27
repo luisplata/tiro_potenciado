@@ -15,10 +15,9 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
         comportamientoCanion = GetComponent<CanionGenerico>();
         evaluado = true;
         speed = 500;
-        speedRotacion = 1;
+        speedRotacion = 2;
         //ahora una rotacion random
         float random = Random.Range(0, 360);
-        Debug.Log("RandomDeRotacion "+ random);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z +random);
     }
 
@@ -44,7 +43,7 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
         }
         if (!evaluado)
         {
-            Debug.DrawRay(transform.position, direccionDeDisparo * 2, Color.blue);
+            GetComponent<Animator>().SetTrigger("Disparar");
             StartCoroutine(LanzarPlayer());
             evaluado = true;
         }
@@ -67,6 +66,14 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
         alCentro = false;
         player.GetComponent<Rigidbody2D>().AddForce(direccionDeDisparo * comportamientoCanion.fuerza * speed);
         player = null;
+        GetComponent<Animator>().SetTrigger("Disparo");
+    }
+
+    public void CambiarLaRotacionDeCoso()
+    {
+        float random = Random.Range(0, 360);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + random);
+        GetComponent<Animator>().SetTrigger("CambioDeLado");
     }
 
 }

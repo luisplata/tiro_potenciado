@@ -5,7 +5,7 @@ public class CanionAmarillo : CanionGenerico
     private void Start()
     {
         color = "Amarillo";
-        tiempoDeEspera = 2;
+        tiempoDeEspera = 2/2;
         fuerza = 1.2f;
     }
 }

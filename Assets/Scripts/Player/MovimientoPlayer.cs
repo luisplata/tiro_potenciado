@@ -20,13 +20,13 @@ public class MovimientoPlayer : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0));
             //va a rotar el sprite
-            Debug.Log("Rotacion del Rigi " + GetComponent<Rigidbody2D>().rotation);
+            //Debug.Log("Rotacion del Rigi " + GetComponent<Rigidbody2D>().rotation);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colisiona con: " + collision.transform.name);
+        //Debug.Log("Colisiona con: " + collision.transform.name);
         if(collision.transform.name != "limites")
         {
             estaEnContactoConAlgo = true;

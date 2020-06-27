@@ -33,7 +33,7 @@ public class Catapulta : MonoBehaviour
 
     public void AddForceToPlayer()
     {
-        Debug.Log("Se añadio la fuerza de " + (Vector2.up * speed));
+        //Debug.Log("Se añadio la fuerza de " + (Vector2.up * speed));
         player.AddForce(Vector2.up * speed);
     }
 
