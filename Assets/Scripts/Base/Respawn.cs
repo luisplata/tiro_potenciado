@@ -16,7 +16,6 @@ public class Respawn : MonoBehaviour
         new Vector2(5f, -2.5f), 
         new Vector2(0, -2.5f), 
         new Vector2(-5f, -2.5f), 
-        new Vector2(-5f, -2.5f), 
         new Vector2(5f, -6), 
         new Vector2(0, -6), 
         new Vector2(-5f, -6)

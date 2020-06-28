@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Parallax : MonoBehaviour
 {
     GameObject fondo1, fondo2, fondo3, aux;
-    public GameObject camara;
-    public float parallaxEfect, radio;
-    private float intervalos = 6.4f;
-    private int intervalo = 1;
+    public GameObject camara, jugador;
+    public float parallaxEfect;
     // Start is called before the first frame update
     void Start()
     {
