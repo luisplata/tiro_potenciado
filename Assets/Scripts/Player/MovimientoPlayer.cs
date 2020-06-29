@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovimientoPlayer : MonoBehaviour
 {
     [SerializeField]
-    private bool estaEnContactoConAlgo;
+    private bool estaEnContactoConAlgo, finDelJuego;
     public float speed;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,11 @@ public class MovimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (finDelJuego)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            return;
+        }
         if (!estaEnContactoConAlgo)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0));

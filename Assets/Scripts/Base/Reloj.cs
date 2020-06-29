@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class Reloj : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class Reloj : MonoBehaviour
     private float tiempo, tiempoMostrar;
     public int tiempoEnSegundos;
     public TextMeshProUGUI tiempo_ui;
+    public PlayableDirector director;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,13 @@ public class Reloj : MonoBehaviour
         tiempo_ui.text = string.Format("{0}:{1}:{2}", min, seg, mil);
         if(min <= 0 && seg <= 0 && mil <= 0)
         {
-            Debug.LogError("Game Over");
+            director.Play();
+            StartCoroutine(GameOver());
         }
+    }
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("GameOver");
     }
 }

@@ -24,8 +24,9 @@ public class Puntuacion : MonoBehaviour
         if(actual_int > max_int)
         {
             max_int = actual_int;
+            //registramos puntuacion
+            PlayerPrefs.SetInt("Score", max_int);
         }
-
         actual.text = actual_int.ToString();
         max.text = max_int.ToString();
     }

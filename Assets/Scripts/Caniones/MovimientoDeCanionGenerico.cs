@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovimientoDeCanionGenerico : MonoBehaviour
 {
-    public bool alCentro, evaluado;
+    public bool alCentro, evaluado, fijo;
     public GameObject player;
     public CanionGenerico comportamientoCanion;
     public Vector2 direccionDeDisparo;
@@ -16,9 +16,12 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
         evaluado = true;
         speed = 500;
         speedRotacion = 2;
-        //ahora una rotacion random
-        float random = Random.Range(0, 360);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z +random);
+        if (!fijo)
+        {
+            //ahora una rotacion random
+            float random = Random.Range(0, 360);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + random);
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +42,10 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
                 movimiento = 0;
             }
             movimiento *= -1;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + movimiento);
+            if (!fijo)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + movimiento);
+            }
         }
         if (!evaluado)
         {
@@ -71,9 +77,12 @@ public class MovimientoDeCanionGenerico : MonoBehaviour
 
     public void CambiarLaRotacionDeCoso()
     {
-        float random = Random.Range(0, 360);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + random);
-        GetComponent<Animator>().SetTrigger("CambioDeLado");
+        if (!fijo)
+        {
+            float random = Random.Range(0, 360);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + random);
+            GetComponent<Animator>().SetTrigger("CambioDeLado");
+        }
     }
 
 }
